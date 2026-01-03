@@ -1,14 +1,14 @@
-# AI Dental Clinic - AiMazing
+# AI Dental Clinic - [Live Demo](https://dentalaiclinic.netlify.app/)
 
 ![Dental AI Clinic Home Page](docs/images/HomePage.png)
 
-A modern, AI-powered dental clinic management platform built with React, Vite, Firebase, and Google Gemini AI. This project streamlines patient management, appointment booking, real-time waitlists, and provides intelligent analytics and chatbot support for both patients and staff.
+A modern, AI-powered dental clinic management platform built with TypeScript React, Vite (CLI), Firebase, and Google Gemini AI. This project streamlines patient management, appointment booking, real-time waitlists, and provides intelligent analytics and chatbot support for both patients and staff.
 
 ---
 
 ## 🚀 Project Overview
 
-**AI Dental Clinic - AiMazing** is a web application designed to revolutionize dental clinic operations. It leverages AI and cloud technologies to provide:
+**AI Dental Clinic** is a web application designed to revolutionize dental clinic operations. It leverages AI and cloud technologies to provide:
 - Seamless patient onboarding and authentication
 - Smart appointment booking and waitlist management
 - Real-time chat support powered by Google Gemini AI
@@ -39,8 +39,7 @@ A modern, AI-powered dental clinic management platform built with React, Vite, F
 | Build         | Vite, TypeScript, PostCSS, Autoprefixer |
 | Linting       | ESLint, typescript-eslint, plugins |
 | Container     | Docker (Node.js, serve)          |
-| Cloud         | Google Cloud Build, Cloud Run, Artifact Registry |
-| Deployment    | YAML manifests for Cloud Run, Cloud Build |
+| Deployment    | Netlify |
 | Notification  | react-hot-toast                  |
 
 ---
@@ -68,7 +67,7 @@ A modern, AI-powered dental clinic management platform built with React, Vite, F
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/shihabhasan0161/Dental-AI-Clinic.git
    cd <repo-folder>
    ```
 2. **Install dependencies:**
@@ -90,50 +89,6 @@ A modern, AI-powered dental clinic management platform built with React, Vite, F
    ```bash
    npm run dev
    ```
-
----
-
-## 🐳 Docker & Cloud Deployment
-
-### **Build & Push with Google Cloud Build**
-
-Cloud Build uses `cloudbuild.yaml` to build and push the Docker image with all required environment variables as build args.
-
-### **Deploy to Google Cloud Run**
-
-After building and pushing the image, deploy using the Google Cloud Console or CLI:
-
-```bash
-gcloud run deploy <SERVICE_NAME> \
-  --image <IMAGE_URL> \
-  --region <REGION> \
-  --platform managed \
-  --set-env-vars VITE_FIREBASE_API_KEY=...,...
-```
-
-Or use a Cloud Run YAML manifest for advanced configuration.
-
----
-
-## 🔑 Environment Variables
-
-| Name                              | Description                       |
-|----------------------------------- |-----------------------------------|
-| VITE_FIREBASE_API_KEY             | Firebase API key                  |
-| VITE_FIREBASE_AUTH_DOMAIN         | Firebase Auth domain              |
-| VITE_FIREBASE_PROJECT_ID          | Firebase project ID               |
-| VITE_FIREBASE_STORAGE_BUCKET      | Firebase storage bucket           |
-| VITE_FIREBASE_MESSAGING_SENDER_ID | Firebase messaging sender ID      |
-| VITE_FIREBASE_APP_ID              | Firebase app ID                   |
-| VITE_GEMINI_API_KEY               | Google Gemini AI API key          |
-
----
-
-## 📊 Demo & Usage
-- **Live Demo:** [https://hackthebrain-aimazing-505286163804.europe-west1.run.app/](https://hackthebrain-aimazing-505286163804.europe-west1.run.app/)
-- Register or log in as a patient or staff
-- Book appointments, chat with the AI assistant, and view analytics
-- Staff can manage waitlists and view real-time data
 
 ---
 
@@ -159,6 +114,3 @@ Built for [HackTheBrain](hackthebrain.ca) 2025
 - Modern, scalable architecture
 
 ---
-
-## 📄 License
-MIT (or specify your license) 
