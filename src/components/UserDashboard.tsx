@@ -77,6 +77,11 @@ const UserDashboard = () => {
     }
   };
 
+  // open old chat session
+  const handleOpenChatSession = ((session: ChatSession) => {
+    navigate(`/chat/${session.sessionId || session.id}`)
+  })
+
   const handleConfirmAppointment = async (appointmentId: string) => {
     try {
       await updateAppointmentStatus(appointmentId, 'confirmed');
@@ -556,6 +561,7 @@ const UserDashboard = () => {
                 </div>
               )}
 
+
               <div className="bg-gray-50 rounded-lg p-4 max-h-40 overflow-y-auto">
                 <div className="space-y-2">
                   {session.messages.slice(-3).map((message, index) => (
@@ -566,6 +572,18 @@ const UserDashboard = () => {
                   ))}
                 </div>
               </div>
+
+              {/* button to open old chat session */}
+              <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleOpenChatSession(session)
+              }}
+              className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Continue Chat</span>
+              </button>
 
               
             </div>

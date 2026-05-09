@@ -39,6 +39,11 @@ function App() {
                 <EnhancedChatBot />
               </ProtectedRoute>
             } />
+            <Route path="/chat/:sessionId" element={
+              <ProtectedRoute>
+                <EnhancedChatBot />
+              </ProtectedRoute>
+            } />
             <Route path="/staff-dashboard" element={<SmartWaitlistDashboard />} />
             <Route path="/analytics" element={<ImpactAnalytics />} />
             <Route path="/pre-registration" element={<PreRegistrationForm />} />

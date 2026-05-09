@@ -55,7 +55,7 @@ const EnhancedAppointmentBooking = () => {
           ...prev,
           firstName: userProfile.firstName || prev.firstName,
           lastName: userProfile.lastName || prev.lastName,
-          preferredName: userProfile.preferredName || '',
+          preferredName: userProfile.firstName || '',
           dateOfBirth: userProfile.dateOfBirth || '',
           street: userProfile.street || '',
           city: userProfile.city || '',
@@ -66,7 +66,6 @@ const EnhancedAppointmentBooking = () => {
         }));
         setHasExistingProfile(true);
         setCurrentStep(4); // Skip directly to appointment details
-        toast.success('Welcome back! We\'ve pre-filled your information.');
       } else {
         // Try to refresh user profile
         refreshUserProfile().catch(() => {

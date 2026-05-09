@@ -16,10 +16,9 @@ const HomePage = () => {
             </div>
             <div className="text-left">
               <h1 className="text-4xl font-bold text-gray-800">Dental AI Clinic</h1>
-              <p className="text-lg text-blue-600 font-medium">AI-Powered Healthcare Access Optimizer</p>
+              <p className="text-lg text-blue-600 font-medium">AI-Powered Clinic Management System</p>
             </div>
           </div>
-          <p className="text-xl text-gray-600">What brings you in today?</p>
         </div>
 
         {/* Authentication Notice */}
@@ -71,42 +70,8 @@ const HomePage = () => {
                 <Brain className="w-6 h-6" />
                 <MessageCircle className="w-6 h-6" />
               </div>
-              <span>AI Triage & Chat with enamAI</span>
+              <span>Talk with our chatbot</span>
             </button>
-          </div>
-        </div>
-
-        {/* Secondary Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {/* Pre-Registration */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="flex items-center space-x-3 mb-4">
-              <FileText className="w-6 h-6 text-purple-600" />
-              <h3 className="text-lg font-semibold text-gray-800">Pre-Registration Forms</h3>
-            </div>
-            <p className="text-gray-600 mb-4">
-              Complete your paperwork online before your appointment to reduce wait times.
-            </p>
-            <button
-              onClick={() => navigate('/pre-registration')}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-            >
-              Complete Forms
-            </button>
-          </div>
-
-          {/* Clinic Information */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="flex items-center space-x-3 mb-4">
-              <Clock className="w-6 h-6 text-orange-600" />
-              <h3 className="text-lg font-semibold text-gray-800">Clinic Hours</h3>
-            </div>
-            <div className="text-gray-600 space-y-1">
-              <p><strong>Mon-Fri:</strong> 8:00 AM - 6:00 PM</p>
-              <p><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
-              <p><strong>Sunday:</strong> Closed</p>
-              <p className="text-sm text-blue-600 mt-2">Emergency appointments available 24/7</p>
-            </div>
           </div>
         </div>
 

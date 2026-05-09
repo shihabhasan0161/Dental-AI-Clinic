@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Send, Bot, User, AlertTriangle, Clock, DollarSign, Shield, Stethoscope, Camera, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { getChatbotResponse, analyzeSymptoms, TriageResult } from '../services/geminiService';
 import { analyzeDentalImage, validateImageFile, ImageAnalysisResult } from '../services/imageAnalysisService';
@@ -23,7 +23,8 @@ const EnhancedChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const { sessionId: routeSessionId } = useParams();
+  const [sessionId] = useState(() => {return routeSessionId || `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`});
   const [isTriageMode, setIsTriageMode] = useState(false);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -40,19 +41,25 @@ const EnhancedChatBot = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (user) {
-      loadChatHistory();
+    if (!user) return;
       
+    const initializeChat = async () => {
+      const loaded = loadChatHistory();
+
+      if (!loaded) {
       // Initial greeting for authenticated users
-      const initialMessage: Message = {
-        id: '1',
-        text: `Hello ${user.displayName?.split(' ')[0] || 'there'}! I'm enamAI, your AI dental assistant at Dental AI Clinic. I'm here to help you with:\n\n• Symptom assessment and triage\n• Dental image analysis\n• Appointment booking guidance\n• Insurance and pricing questions\n• Clinic information\n\nHow can I assist you today?`,
-        isBot: true,
-        timestamp: new Date()
-      };
-      setMessages([initialMessage]);
-    }
-  }, [user]);
+        const initialMessage: Message = {
+          id: '1',
+          text: `Hello ${user.displayName?.split(' ')[0] || 'there'}! I'm enamAI, your AI dental assistant at Dental AI Clinic. I'm here to help you with:\n\n• Symptom assessment and triage\n• Dental image analysis\n• Appointment booking guidance\n• Insurance and pricing questions\n• Clinic information\n\nHow can I assist you today?`,
+          isBot: true,
+          timestamp: new Date()
+        };
+        setMessages([initialMessage]);
+        await saveMessage(initialMessage);
+      }
+    };
+    initializeChat();
+  }, [user, sessionId]);
 
   const loadChatHistory = async () => {
     try {
